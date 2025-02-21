@@ -16,18 +16,17 @@
 
         function trackButtonClick(button, buttonName) {
             gtag('event', 'button_click', {
-                'event_category': 'User Interaction',
-                'event_label': buttonName
+                 'event_category': 'User Interaction',
+                 'event_label': buttonName  // More readable labels
             });
 
-            // Change button color to green on click
-            button.style.backgroundColor = "green";
+        // Change button color to green on click
+        button.style.backgroundColor = "green";
+        setTimeout(() => {
+        button.style.backgroundColor = "";
+        }, 500);
+    }
 
-            // Reset back to normal after 500ms
-            setTimeout(() => {
-                button.style.backgroundColor = "";
-            }, 500);
-        }
     </script>
 
     <style>
@@ -87,10 +86,11 @@
     <h4>What is your preferred mode of public transport?</h4>
 
     <div class="button-container">
-        <button onclick="trackButtonClick(this, 'Button 1')">Cab</button>
-        <button onclick="trackButtonClick(this, 'Button 2')">Bus</button>
-        <button onclick="trackButtonClick(this, 'Button 3')">Auto</button>
-        <button onclick="trackButtonClick(this, 'Button 4')">Bike Taxi</button>
+        <button onclick="trackButtonClick(this, 'Cab')">Cab</button>
+        <button onclick="trackButtonClick(this, 'Bus')">Bus</button>
+        <button onclick="trackButtonClick(this, 'Auto')">Auto</button>
+        <button onclick="trackButtonClick(this, 'Bike Taxi')">Bike Taxi</button>
+
     </div>
 
 </body>
