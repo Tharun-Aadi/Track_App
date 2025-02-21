@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Analytics Event Tracking</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        // Replace YOUR_GA_MEASUREMENT_ID with your actual GA4 Measurement ID
+        gtag('config', 'YOUR_GA_MEASUREMENT_ID');
+
+        function trackButtonClick(button, buttonName) {
+            gtag('event', 'button_click', {
+                'event_category': 'User Interaction',
+                'event_label': buttonName
+            });
+
+            // Change button color to green on click
+            button.style.backgroundColor = "green";
+
+            // Reset back to normal after 500ms
+            setTimeout(() => {
+                button.style.backgroundColor = "";
+            }, 500);
+        }
+    </script>
+
+    <style>
+        /* Center content */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        /* Title styles */
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        /* Button styles */
+        button {
+            width: 200px;
+            height: 60px;
+            font-size: 18px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+            border-radius: 8px;
+        }
+
+            /* Hover effect */
+            button:hover {
+                background-color: #0056b3;
+            }
+
+            /* Click effect */
+            button:active {
+                transform: scale(0.95);
+            }
+    </style>
+</head>
+<body>
+
+    <h1>General Survey</h1>  <!-- Title above buttons -->
+    <h4>What is your preferred mode of public transport?</h4>
+
+    <div class="button-container">
+        <button onclick="trackButtonClick(this, 'Button 1')">Cab</button>
+        <button onclick="trackButtonClick(this, 'Button 2')">Bus</button>
+        <button onclick="trackButtonClick(this, 'Button 3')">Auto</button>
+        <button onclick="trackButtonClick(this, 'Button 4')">Bike Taxi</button>
+    </div>
+
+</body>
+</html>
