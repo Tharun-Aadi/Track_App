@@ -15,17 +15,18 @@
         gtag('config', 'G-B61RV0QGT5');
 
         function trackButtonClick(button, buttonName) {
-            gtag('event', 'button_click', {
-                 'event_category': 'User Interaction',
-                 'event_label': buttonName  // More readable labels
-            });
+      gtag('event', 'button_click', {
+          'event_category': 'User Interaction',
+          'event_label': buttonName,  // Sends button name as label
+          'button_name': buttonName   // Custom parameter for filtering
+      });
 
-        // Change button color to green on click
-        button.style.backgroundColor = "green";
-        setTimeout(() => {
-        button.style.backgroundColor = "";
-        }, 500);
-    }
+      // Change button color to green on click
+      button.style.backgroundColor = "green";
+      setTimeout(() => {
+          button.style.backgroundColor = "";
+      }, 500);
+  }
 
     </script>
 
