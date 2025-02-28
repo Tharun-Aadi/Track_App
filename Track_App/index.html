@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Analytics Event Tracking</title>
-<!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B61RV0QGT5"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-xxxxxxxxxx"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -14,20 +14,18 @@
         // Replace YOUR_GA_MEASUREMENT_ID with your actual GA4 Measurement ID
         gtag('config', 'G-B61RV0QGT5');
 
-        function trackButtonClick(button, buttonName) {
-      gtag('event', 'button_click', {
-          'event_category': 'User Interaction',
-          'event_label': buttonName,  // Sends button name as label
-          'button_name': buttonName   // Custom parameter for filtering
-      });
+        function trackButtonClick(button, eventName) {
+            gtag('event', eventName, {
+                'event_category': 'User Interaction',
+                'event_label': eventName  // Sends event name as label
+            });
 
-      // Change button color to green on click
-      button.style.backgroundColor = "green";
-      setTimeout(() => {
-          button.style.backgroundColor = "";
-      }, 500);
-  }
-
+            // Change button color to green on click
+            button.style.backgroundColor = "green";
+            setTimeout(() => {
+                button.style.backgroundColor = "";
+            }, 500);
+        }
     </script>
 
     <style>
@@ -70,15 +68,15 @@
             border-radius: 8px;
         }
 
-            /* Hover effect */
-            button:hover {
-                background-color: #0056b3;
-            }
+        /* Hover effect */
+        button:hover {
+            background-color: #0056b3;
+        }
 
-            /* Click effect */
-            button:active {
-                transform: scale(0.95);
-            }
+        /* Click effect */
+        button:active {
+            transform: scale(0.95);
+        }
     </style>
 </head>
 <body>
@@ -87,11 +85,10 @@
     <h4>What is your preferred mode of public transport?</h4>
 
     <div class="button-container">
-        <button onclick="trackButtonClick(this, 'Cab')">Cab</button>
-        <button onclick="trackButtonClick(this, 'Bus')">Bus</button>
-        <button onclick="trackButtonClick(this, 'Auto')">Auto</button>
-        <button onclick="trackButtonClick(this, 'Bike Taxi')">Bike Taxi</button>
-
+        <button onclick="trackButtonClick(this, 'cab_click')">Cab</button>
+        <button onclick="trackButtonClick(this, 'bus_click')">Bus</button>
+        <button onclick="trackButtonClick(this, 'auto_click')">Auto</button>
+        <button onclick="trackButtonClick(this, 'bike_taxi_click')">Bike Taxi</button>
     </div>
 
 </body>
